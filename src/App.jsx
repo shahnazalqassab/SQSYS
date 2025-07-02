@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import Login from './pages/Login'
 
 import { CheckSession } from './services/User'
 
@@ -34,7 +36,9 @@ const App = () => {
 
       <main>
         <Routes>
-
+          <Route path="/" element={<Home />} />
+          <Route path="/user/login" element={<Login setUser={setUser} />} />
+          <Route path="/user/create" element={<CreateUser setUser={setUser} />} />
         </Routes>
       </main>
     </>

@@ -12,6 +12,16 @@ export const createUser = async (data) => {
 }
 
 
+export const loginUser = async (data) => {
+    try {
+        const response = await Client.post('/user/login', data)
+        return response.data
+
+    } catch (error) {
+        console.log('Error logging in user:', error)
+        throw error
+    }
+}
 
 
 
