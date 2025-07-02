@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/App.css'
 
-export const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ user, handleLogout }) => {
     let userOptions
 
     if (user) {
@@ -12,8 +12,7 @@ export const NavBar = ({ user, handleLogout }) => {
                 </div>
                 <div className="nav-right">
                 <Link to="/products">Products</Link>
-                <Link to="/users">Users</Link>
-                <button onClick={handleLogout} to="/">Sign out</button>
+                <Link to={`/user/${user.id}/users`}>Users</Link>                <button onClick={handleLogout} to="/">Sign out</button>
             </div>
             </nav>
         )
@@ -36,9 +35,11 @@ export const NavBar = ({ user, handleLogout }) => {
     return (
         <header>
             <Link to = "/">
-            <img className = "logo" src = "src/images/logo.png" alt = "logo" />
+            <img className = "logo" src = "src/images/logo.PNG" alt = "logo" />
             </Link>
             {user ? userOptions : publicOptions}
         </header>
     )
 }
+
+export default NavBar

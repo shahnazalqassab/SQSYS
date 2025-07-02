@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
+
 const Home = ({ user }) => {
     let navigate = useNavigate()
 

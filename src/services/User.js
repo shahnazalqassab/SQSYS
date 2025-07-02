@@ -15,13 +15,15 @@ export const createUser = async (data) => {
 export const loginUser = async (data) => {
     try {
         const response = await Client.post('/user/login', data)
-        return response.data
+        localStorage.setItem('token', response.data.token) // Store token in localStorage
+        return response.data.user
 
     } catch (error) {
         console.log('Error logging in user:', error)
         throw error
     }
 }
+
 
 
 
@@ -32,6 +34,6 @@ export const CheckSession = async () => {
 
     } catch (error) {
         console.log('Error checking session:', error)
-        throw error
+        return null
     }
 }
