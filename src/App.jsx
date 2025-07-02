@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
+import NavBar from './components/NavBar'
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { CheckSession } from './services/User'
+
 import './styles/App.css'
 
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
 
       <main>
         <Routes>
-          
+
         </Routes>
       </main>
     </>
