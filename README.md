@@ -1,12 +1,22 @@
-# React + Vite
+# SQSYS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- A fully system for small-medium retail businesses. The system will include inventory management system module, e-shop module & can be customized according to client needs.
+---
 
-Currently, two official plugins are available:
+## Trello Documentation
+[Trello](https://trello.com/invite/b/685db5446ed1ef56ff7fcd9d/ATTI39e5d235182b515774200874ca3d724282599C3A/sqsys)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Current Features
+- Inventory Management System Features
+    - Adding/modifying & deleting products
+    - 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+### Future Features
+- E-Shop Features
+    - 
+
+
