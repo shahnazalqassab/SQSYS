@@ -24,6 +24,16 @@ export const loginUser = async (data) => {
     }
 }
 
+export const getUsers = async () => {
+    try {
+        const response = await Client.get('/user/:id/users')
+        return response.data
+
+    } catch (error) {
+        console.log('Error fetching users:', error)
+        throw error
+    }
+}   
 
 
 
