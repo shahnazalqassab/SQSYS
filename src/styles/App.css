@@ -64,6 +64,21 @@ button:hover {
   vertical-align: middle;
 }
 
+
+/* Footer styles */
+.footer {
+  width: 100vw;
+  background: #00a89c;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
 /* Home page styles */
 .home-css {
   display: flex;
@@ -260,3 +275,138 @@ html, body, #root {
 .index-css button:hover {
   background: #00796b;
 }
+
+.users-css {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,168,156,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-css h1 {
+  color: #00a89c;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.users-css button {
+  background: #00a89c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,168,156,0.07);
+}
+
+.users-css button:hover {
+  background: #00796b;
+}
+
+@media (max-width: 600px) {
+  .users-css {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+  }
+}
+
+.user-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,168,156,0.10);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-list h2 {
+  color: #00a89c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.user-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background: #fafafa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-list th, .user-list td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+
+.user-list th {
+  background: #00a89c;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.user-list tr:nth-child(even) {
+  background: #f4f8f8;
+}
+
+.user-list tr:hover {
+  background: #e0f7fa;
+}
+
+.user-list th, .user-list td {
+  color: #111; /* Set font color to black */
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+
+.user-list button {
+  background: #00a89c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.user-list button:hover {
+  background: #00796b;
+}
+
+.user-list p {
+  color: #d32f2f;
+  font-size: 1.05rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+  .user-list {
+    padding: 1rem 0.2rem;
+    max-width: 99vw;
+  }
+  .user-list table, .user-list th, .user-list td {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.4rem;
+  }
