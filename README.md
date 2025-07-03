@@ -24,7 +24,9 @@
     - Salesperson:
         - Update products' details
 
-
+## Pseudo code 
+- mentioned in Trello
+- 
 ### Future Features
 - E-Shop Features
 - Quotations Features
