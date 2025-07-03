@@ -1,5 +1,7 @@
 import Client from './api'
 
+
+
 export const createUser = async (data) => {
     try {
         const response = await Client.post('/user/create', data)
@@ -35,6 +37,16 @@ export const getUsers = async () => {
     }
 }   
 
+export const updateUser = async (id, data) => {
+    try {
+        const response = await Client.put(`/user/${id}/users`, data)
+        return response.data.user
+
+    } catch (error) {
+        console.log('Error updating user:', error)
+        throw error
+    }
+}
 
 
 export const CheckSession = async () => {
