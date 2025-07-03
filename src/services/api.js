@@ -10,6 +10,7 @@ Client.interceptors.request.use((config) => {
         if (token && !config.url.endsWith('/user/login')) {
             config.headers['Authorization'] = `Bearer ${token}`
         }
+        console.log('Request config:', config)
         return config
     },
     (error) => {

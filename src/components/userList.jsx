@@ -2,16 +2,13 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 
-const UserList = ({ users, onEdit, onDelete, setSelectedUser, onReset }) => {
+const UserList = ({ users, onEdit, onDelete, setSelectedUser, onReset, onState  }) => {
     const navigate = useNavigate()
-    console.log('Users:', users)
     const [editId, setEditId] = useState(null)
-    const [editValues, setEditValues] = useState(null)  
-    const [localUsers, setLocalUsers] = useState(users)
+    const [editValues, setEditValues] = useState({})  
 
-    useEffect(() => {
-        setLocalUsers(users)
-    }, [users])
+    console.log('Users:', users)
+
 
     const handleEditClick = (user) => {
         setEditId(user._id)
@@ -74,10 +71,10 @@ const UserList = ({ users, onEdit, onDelete, setSelectedUser, onReset }) => {
                             </>
                             ) : (
                             <>
-                                <button onClick={() => onReset(user)}>Reset</button>
+                                <button onClick={() => onReset(user)}>Reset Password</button>
                                 <button onClick={() => { setSelectedUser(user); handleEditClick(user); }}>Edit</button>                                
                                 <button onClick={() => onState(user)}>Activate/Deactivate</button>
-                                {/* <button onClick={() => onDelete(user._id)}>Delete</button> */}
+                                <button onClick={() => onDelete(user._id)}>Delete</button>
                             </>
                             )}
                         </td>

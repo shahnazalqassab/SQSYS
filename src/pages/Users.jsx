@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import UserList from '../components/UserList'
 import UserForm from '../components/UserForm'
-import { getUsers, updateUser, createUser } from '../services/User'
+import { getUsers, updateUser, createUser, resetUser, deleteUser, updateState } from '../services/User'
 
 const Users = ({ user }) => {
     const [users, setUsers] = useState([])
@@ -30,9 +30,10 @@ const Users = ({ user }) => {
     const handleCreate = async (userData) => {
         try {
             const newUser = await createUser({ ...userData })
-            setUsers([...users, newUser])
+            console.log(newUser)
+            setUsers([...users, newUser.user])
             setShowForm(false)
-            setCreatedUser( { name: '', email: '', username: '', password: '', user_role: '', status: ''})
+            // setCreatedUser( { name: '', email: '', username: '', password: '', user_role: '', status: ''})
             setFormError('')
 
         } catch (error) {
@@ -44,8 +45,9 @@ const Users = ({ user }) => {
 
     const handleEdit = async (userData) => {
         try {
-            const updatedUser = await updateUser(selectedUser._id, userData)
-            setUsers(users.map(user => user._id === selectedUser._id ? updatedUser : user))
+            const updatedUser = await updateUser(userData._id, userData)
+            
+            setUsers(users.map(user => user._id === updateUser._id ? updatedUser : user))
             setSelectedUser(null)
 
         } catch (error) {
@@ -53,21 +55,22 @@ const Users = ({ user }) => {
         }
     }
 
+    const handleDelete = async (userId) => {
+        try {
+            await deleteUser(userId)
+            setUsers(users.filter(user => user._id !== userId))
 
-    // const handleDelete = async (userId) => {
-    //     try {
-    //         await deleteUser(userId)
-    //         setUsers(users.filter(user => user._id !== userId))
+        } catch (error) {
+            console.error('Failed to delete user:', error)
+        }
+    }
 
-    //     } catch (error) {
-    //         console.error('Failed to delete user:', error)
-    //     }
-    // }
 
     const handleReset = async (user) => {
         try {
-            const resetUser = await resetUser(user._id)
-            setUsers(users.map(u => u._id === user._id ? resetUser : u))
+            const reset = await resetUser(user._id)
+
+            setUsers(users.map(u => u._id === user._id ? reset : u))
 
         } catch (error) {
             console.error('Failed to reset user:', error)
@@ -76,7 +79,7 @@ const Users = ({ user }) => {
 
     const handleState = async (user) => {
         try {
-            const updatedUser = await updateUser(user._id, { status: user.status === 'active' ? 'inactive' : 'active' })
+            const updatedUser = await updateState(user._id, { status: user.status === 'active' ? 'inactive' : 'active' })
             setUsers(users.map(u => u._id === user._id ? updatedUser : u))
 
         } catch (error) {
@@ -102,7 +105,7 @@ const Users = ({ user }) => {
         
                 </>
             )}
-            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onState={handleState} />
+            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onDelete={handleDelete} onState={handleState} />
         </div>
     )
 }

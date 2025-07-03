@@ -32,6 +32,7 @@ const SupplierForm = ({ onSubmit, error, suppliers = [] }) => {
         if (nameExists)
             return
 
+        console.log('Submitting form:', form) // Add this line
         onSubmit(form)
         setForm({
             name: '',

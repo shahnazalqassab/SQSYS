@@ -30,7 +30,7 @@ const Suppliers = ({ user, supplier }) => {
     const handleCreate = async (supplierData) => {
         try {
             const newSupplier = await createSupplier({ ...supplierData })
-            setSupplier([...suppliers, newSupplier])
+            setSuppliers([...suppliers, newSupplier])
             setShowForm(false)
             setCreatedSupplier( { name: '', address: '', phone: '', fax: '', email: '', created_by: `${user._id}`})
             setFormError('')

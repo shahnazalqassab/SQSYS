@@ -26,9 +26,10 @@ export const loginUser = async (data) => {
     }
 }
 
+
 export const getUsers = async () => {
     try {
-        const response = await Client.get('/user/:id/users')
+        const response = await Client.get(`/user/users`)
         return response.data
 
     } catch (error) {
@@ -37,9 +38,19 @@ export const getUsers = async () => {
     }
 }   
 
+
 export const updateUser = async (id, data) => {
     try {
-        const response = await Client.put(`/user/${id}/users`, data)
+        const token = localStorage.getItem('token')
+        const response = await Client.put(`/user/users/edit`, {id, data}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token)
+        }
+        console.log(response.data.user)
         return response.data.user
 
     } catch (error) {
@@ -49,10 +60,64 @@ export const updateUser = async (id, data) => {
 }
 
 
+export const resetUser = async (id) => {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await Client.post(`/user/reset-password`, id, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token)
+        }
+        console.log(response.data.user)
+        return response.data.user
+
+    } catch (error) {
+        console.log('Error resetting password:', error)
+        throw error
+    }
+}
+
+
+export const updateState = async (id, data) => {
+    try {
+        const token = localStorage.getItem('token')
+        const response = await Client.patch(`/user/activate-deactivate`, {id, data}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token)
+        }
+        console.log(response.data.user)
+        return response.data.user
+
+    } catch (error) {
+        console.log('Error updating user:', error)
+        throw error
+    }
+}
+
+
+export const deleteUser = async (id) => {
+    try {
+        const response = await Client.delete(`/user/users/${id}`)
+        return response.data
+
+    } catch (error) {
+        console.log('Error deleting user:', error)
+        throw error
+    }
+}
+
+
 export const CheckSession = async () => {
     try {
         const response = await Client.get('/user/session')
-        return response.data
+        return response.data.user
 
     } catch (error) {
         console.log('Error checking session:', error)

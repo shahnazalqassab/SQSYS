@@ -438,6 +438,7 @@ html, body, #root {
 .user-form select {
   padding: 0.7rem 1rem;
   border: 1px solid #bdbdbd;
+  color: #222;
   border-radius: 5px;
   font-size: 1rem;
   min-width: 140px;
@@ -601,6 +602,128 @@ html, body, #root {
     padding: 1rem 0.2rem;
   }
   .supplier-list th, .supplier-list td {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.4rem;
+  }
+}
+
+
+.products-css {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+
+.products-css h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #008080;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.products-css button {
+  background: #00a89c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,168,156,0.07);
+
+}
+
+.products-css button:hover {
+  background: #00796b;
+}
+
+@media (max-width: 900px) {
+  .products-css {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.products-list {
+  background: #f9f9fb;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  margin: 2rem 0;
+  max-width: 100%;
+}
+
+.products-list h2 {
+  color: #008080;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.products-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.products-list th, .products-list td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+.products-list th {
+  background: #e0f7fa;
+  color: #00695c;
+  font-weight: 600;
+}
+
+.products-list tr:last-child td {
+  border-bottom: none;
+}
+
+.products-list input[type="text"],
+.products-list input[type="email"] {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.products-list button {
+  background: #00a89c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 0.4rem;
+  transition: background 0.2s;
+}
+
+.products-list button:hover {
+  background: #00796b;
+}
+
+@media (max-width: 800px) {
+  .products-list {
+    padding: 1rem 0.2rem;
+  }
+  .products-list th, .products-list td {
     font-size: 0.95rem;
     padding: 0.5rem 0.4rem;
   }

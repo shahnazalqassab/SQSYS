@@ -25,9 +25,7 @@ const App = () => {
       setUser(user)
     }
 
-    if (token) {
       checkToken()
-    }
   }, [])
   
   const handleLogout = () => {
