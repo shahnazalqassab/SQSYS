@@ -24,7 +24,7 @@ const Users = ({ user }) => {
             console.error('Failed to fetch users:', error)
         }}
         fetchUsers()
-    }, [])
+    }, [users])
 
 
     const handleCreate = async (userData) => {

@@ -1,20 +1,27 @@
 import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Get }
+import { GetProducts, CreateProduct, UpdateProduct, DeleteProduct } from '../services/Product'
 
 const Products = ({ user }) => {
     let navigate = useNavigate()
+    const [products, setProducts] = useState([])
+    const [selectedProduct, setSelectedProduct] = useState(null)
+
 
     const [userData, setUserData] = useState(null)
 
     useEffect(() => {
-        if (user) {
-            setUserData(user)
-        } else {
-            navigate('/user/login')
-        }
-    }, [user, navigate])
+            const fetchProducts = async () => {
+            try {
+                const data = await GetProducts()
+                setProducts(data)
+    
+            } catch (error) {
+                console.error('Failed to fetch products:', error)
+            }}
+            fetchProducts()
+        }, [users])
 
     return (
         <div className="product-css">

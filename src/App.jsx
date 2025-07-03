@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Index from './pages/Index'
 import Home from './pages/Home'
+import Contact from './pages/ContactUs'
 import Login from './pages/Login'
 import Users from './pages/Users'
 import { CheckSession } from './services/User'
@@ -42,6 +43,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/user/login" element={<Login setUser={setUser} />} />
           <Route path="/user/:id/index" element={<Index user={user} />} />
           <Route path="/user/:id/users" element={<Users user={user} />} />
