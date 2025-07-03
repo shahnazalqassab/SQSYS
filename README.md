@@ -11,12 +11,25 @@
 
 ### Current Features
 - Inventory Management System Features
-    - Adding/modifying & deleting products
-    - 
+    - Admin Control "full access":
+        - Users Management Control
+        - Products Management Control
+        - Suppliers Management Control
+        - Purchase Orders Management Control
+
+    - Inventory Staff Control:
+        - Products Management Control
+        - Purchase Orders Management Control
+
+    - Salesperson:
+        - Update products' details
 
 
 ### Future Features
 - E-Shop Features
-    - 
+- Quotations Features
+- Services Features
+- Rental Features
+---
 
 

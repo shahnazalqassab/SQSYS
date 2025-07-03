@@ -277,7 +277,7 @@ html, body, #root {
 }
 
 .users-css {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 3rem auto;
   padding: 2.5rem 2rem;
   background: #fff;
@@ -323,8 +323,8 @@ html, body, #root {
 }
 
 .user-list {
-  width: 100%;
-  max-width: 900px;
+  width: 95%;
+  max-width: 1100px;
   margin: 2rem auto;
   background: #fff;
   border-radius: 12px;
@@ -353,8 +353,9 @@ html, body, #root {
 }
 
 .user-list th, .user-list td {
+  color: #111;
   padding: 0.8rem 1rem;
-  text-align: left;
+  text-align: justify;
 }
 
 .user-list th {
@@ -372,11 +373,6 @@ html, body, #root {
   background: #e0f7fa;
 }
 
-.user-list th, .user-list td {
-  color: #111; /* Set font color to black */
-  padding: 0.8rem 1rem;
-  text-align: left;
-}
 
 .user-list button {
   background: #00a89c;

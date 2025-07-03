@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Users from './pages/Users'
 import { CheckSession } from './services/User'
+import Products from './pages/Products'
 import './styles/App.css'
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/user/login" element={<Login setUser={setUser} />} />
           <Route path="/user/:id/index" element={<Index user={user} />} />
           <Route path="/user/:id/users" element={<Users user={user} />} />
+          <Route path="/user/:id/products" element={<Products user={user} />} />
 
 
           {/* <Route path="/user/create" element={<CreateUser setUser={setUser} />} /> */}

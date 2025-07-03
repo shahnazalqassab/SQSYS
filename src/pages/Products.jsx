@@ -1,8 +1,9 @@
 import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { Get }
 
-const Index = ({ user }) => {
+const Products = ({ user }) => {
     let navigate = useNavigate()
 
     const [userData, setUserData] = useState(null)
@@ -16,11 +17,10 @@ const Index = ({ user }) => {
     }, [user, navigate])
 
     return (
-        <div className="index-css">
-            <h1>Welcome to your dashboard, {userData ? userData.username : 'Guest'}</h1>
+        <div className="product-css">
         </div>
     )
 }
 
 
-export default Index
+export default Products
