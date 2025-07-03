@@ -37,7 +37,7 @@ const UserForm = ({ onSubmit, onCancel, error, users = [] }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="user-form" onSubmit={handleSubmit}>
         <input
             type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange}
             required
@@ -59,14 +59,10 @@ const UserForm = ({ onSubmit, onCancel, error, users = [] }) => {
 
         <button type="submit">Create</button>
 
-        {error && (
-        <div className="form-error">
-            {error}
-        </div>
-        )}
-        {usernameExists && (
+        {(error || usernameExists) && (
             <div className="form-error">
-                Username already exists.
+                {error && <div>{error}</div>}
+                {usernameExists && <div>Username already exists.</div>}
             </div>
         )}
 

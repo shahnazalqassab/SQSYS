@@ -75,11 +75,9 @@ const UserList = ({ users, onEdit, onDelete, setSelectedUser, onReset }) => {
                             ) : (
                             <>
                                 <button onClick={() => onReset(user)}>Reset</button>
-                                <button onClick={() => { setSelectedUser(user); handleEditClick(user); }}>Edit</button>                                <button onClick={() => onState(user)}>Activate/Deactivate</button>
-                                {/* Example: Only show delete for other users */}
-                                {user && user._id !== user._id && (
+                                <button onClick={() => { setSelectedUser(user); handleEditClick(user); }}>Edit</button>                                
+                                <button onClick={() => onState(user)}>Activate/Deactivate</button>
                                 <button onClick={() => onDelete(user._id)}>Delete</button>
-                                )}
                             </>
                             )}
                         </td>

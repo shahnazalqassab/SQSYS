@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SupplierList from '../components/SupplierList'
 import SupplierForm from '../components/SupplierForm'
-import { getSuppliers, updateSupplier, createSupplier } from '../services/Supplier'
+import { getSuppliers, updateSupplier, createSupplier, deleteSupplier } from '../services/Supplier'
 
 const Suppliers = ({ user, supplier }) => {
     const [suppliers, setSuppliers] = useState([])
@@ -24,85 +24,67 @@ const Suppliers = ({ user, supplier }) => {
             console.error('Failed to fetch suppliers:', error)
         }}
         fetchSuppliers()
-    }, [users])
+    }, [suppliers])
 
 
     const handleCreate = async (supplierData) => {
         try {
             const newSupplier = await createSupplier({ ...supplierData })
-            setUsers([...suppliers, newSupplier])
+            setSupplier([...suppliers, newSupplier])
             setShowForm(false)
-            setCreatedSupplier( { name: '', address: '', phone: '', fax: '', email: '', created_by: ''})
+            setCreatedSupplier( { name: '', address: '', phone: '', fax: '', email: '', created_by: `${user._id}`})
             setFormError('')
 
         } catch (error) {
             const message = error?.response?.data?.message || 'Failed to create user.'
             setFormError(message)
-            console.error('Failed to create user:', error)
+            console.error('Failed to create supplier:', error)
         }
     }
 
-    const handleEdit = async (userData) => {
+    const handleEdit = async (supplierData) => {
         try {
-            const updatedUser = await updateUser(selectedUser._id, userData)
-            setUsers(users.map(user => user._id === selectedUser._id ? updatedUser : user))
-            setSelectedUser(null)
+            const updatedSupplier = await updateSupplier(selectedSupplier._id, supplierData)
+            setSuppliers(suppliers.map(supplier => supplier._id === selectedSupplier._id ? updatedSupplier : supplier))
+            setSelectedSupplier(null)
 
         } catch (error) {
-            console.error('Failed to update user:', error)
+            console.error('Failed to update supplier:', error)
         }
     }
 
 
-    const handleDelete = async (userId) => {
+    const handleDelete = async (supplierId) => {
         try {
-            await deleteUser(userId)
-            setUsers(users.filter(user => user._id !== userId))
+            await deleteSupplier(supplierId)
+            setSupplier(suppliers.filter(supplier => supplier._id !== supplierId))
 
         } catch (error) {
-            console.error('Failed to delete user:', error)
+            console.error('Failed to delete supplier:', error)
         }
     }
 
-    const handleReset = async (user) => {
-        try {
-            const resetUser = await resetUser(user._id)
-            setUsers(users.map(u => u._id === user._id ? resetUser : u))
 
-        } catch (error) {
-            console.error('Failed to reset user:', error)
-        }
-    }
-
-    const handleState = async (user) => {
-        try {
-            const updatedUser = await updateUser(user._id, { status: user.status === 'active' ? 'inactive' : 'active' })
-            setUsers(users.map(u => u._id === user._id ? updatedUser : u))
-
-        } catch (error) {
-            console.error('Failed to update user state:', error)
-        }
-    }
 
 
     return (
-        <div className="users-css">
-            <h1>Users Management</h1>
+        <div className="suppliers-css">
+            <h1>Suppliers Management</h1>
             <button onClick = {() => { setShowForm(!showForm); setFormError('') }}>
-                {showForm ? 'Cancel' : 'Add New User'}
+                {showForm ? 'Cancel' : 'Add New Supplier'}
             </button>
             {showForm && (
                 <>
-                    <UserForm
+                    <SupplierForm
                         onSubmit = {handleCreate}
                         onCancel = {() => setShowForm(false)}
                         error = {formError}
-                        users = {users}
+                        suppliers = {suppliers}
                     />
         
                 </>
             )}
-            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onDelete={handleDelete} onReset={handleReset} onState={handleState} />
+            <SupplierList suppliers = {suppliers} setSelectedSupplier={setSelectedSupplier} onEdit={handleEdit} onDelete={handleDelete} />
         </div>
     )
 }
