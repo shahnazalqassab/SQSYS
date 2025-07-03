@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const UserForm = ({ onSubmit, onCancel, error, users = [] }) => {
+const UserForm = ({ onSubmit, error, users = [] }) => {
     const [form, setForm] = useState({
         username: '',
         name: '',

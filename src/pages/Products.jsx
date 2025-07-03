@@ -21,7 +21,7 @@ const Products = ({ user }) => {
                 console.error('Failed to fetch products:', error)
             }}
             fetchProducts()
-        }, [users])
+        }, [])
 
     return (
         <div className="product-css">

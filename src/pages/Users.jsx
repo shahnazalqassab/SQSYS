@@ -54,15 +54,15 @@ const Users = ({ user }) => {
     }
 
 
-    const handleDelete = async (userId) => {
-        try {
-            await deleteUser(userId)
-            setUsers(users.filter(user => user._id !== userId))
+    // const handleDelete = async (userId) => {
+    //     try {
+    //         await deleteUser(userId)
+    //         setUsers(users.filter(user => user._id !== userId))
 
-        } catch (error) {
-            console.error('Failed to delete user:', error)
-        }
-    }
+    //     } catch (error) {
+    //         console.error('Failed to delete user:', error)
+    //     }
+    // }
 
     const handleReset = async (user) => {
         try {
@@ -102,7 +102,7 @@ const Users = ({ user }) => {
         
                 </>
             )}
-            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onDelete={handleDelete} onReset={handleReset} onState={handleState} />
+            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onState={handleState} />
         </div>
     )
 }

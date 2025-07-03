@@ -49,7 +49,7 @@ const App = () => {
           <Route path="/user/:id/index" element={<Index user={user} />} />
           <Route path="/user/:id/users" element={<Users user={user} />} />
           <Route path="/user/:id/suppliers" element={<Suppliers user={user} />} />
-          <Route path="/products" element={<Products user={user} />} />
+          <Route path="/user/:id/products" element={<Products user={user} />} />
 
 
           {/* <Route path="/user/create" element={<CreateUser setUser={setUser} />} /> */}
