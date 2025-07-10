@@ -18,6 +18,7 @@ export const loginUser = async (data) => {
     try {
         const response = await Client.post('/user/login', data)
         localStorage.setItem('token', response.data.token) // Store token in localStorage
+        console.log(localStorage.token)
         return response.data.user
 
     } catch (error) {
@@ -41,12 +42,7 @@ export const getUsers = async () => {
 
 export const updateUser = async (id, data) => {
     try {
-        const token = localStorage.getItem('token')
-        const response = await Client.put(`/user/users/edit`, {id, data}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        const response = await Client.put(`/user/users/edit`, {id, data})
         if (response.data.token) {
             localStorage.setItem('token', response.data.token)
         }
@@ -62,12 +58,7 @@ export const updateUser = async (id, data) => {
 
 export const resetUser = async (id) => {
     try {
-        const token = localStorage.getItem('token')
-        const response = await Client.post(`/user/reset-password`, id, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        const response = await Client.post(`/user/reset-password`, id)
         if (response.data.token) {
             localStorage.setItem('token', response.data.token)
         }
@@ -83,12 +74,7 @@ export const resetUser = async (id) => {
 
 export const updateState = async (id, data) => {
     try {
-        const token = localStorage.getItem('token')
-        const response = await Client.patch(`/user/activate-deactivate`, {id, data}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
+        const response = await Client.patch(`/user/activate-deactivate`, {id, data })
         if (response.data.token) {
             localStorage.setItem('token', response.data.token)
         }
@@ -117,7 +103,7 @@ export const deleteUser = async (id) => {
 export const CheckSession = async () => {
     try {
         const response = await Client.get('/user/session')
-        return response.data.user
+        return response.data
 
     } catch (error) {
         console.log('Error checking session:', error)

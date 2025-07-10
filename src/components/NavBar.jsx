@@ -8,12 +8,13 @@ const NavBar = ({ user, handleLogout }) => {
         userOptions = (
             <nav>
                 <div className = "nav-left">
-                    <h3> Welcome, {user.name}!</h3>
+                    {/* <h3> Welcome, {user.name}!</h3> */}
                 </div>
                 <div className="nav-right">
-                <Link to={`/user/${user.id}/products`}>Products</Link>
+                {/* <Link to={`/user/${user.id}/products`}>Products</Link>
                 <Link to={`/user/${user.id}/suppliers`}>Suppliers</Link>                
-                <Link to={`/user/${user.id}/users`}>Users</Link>                
+                <Link to={`/user/${user.id}/users`}>Users</Link>                 */}
+                <Link to={`/user/${user.id}/index`}>Home</Link>                
                 <button onClick={handleLogout} to="/">Sign out</button>
             </div>
             </nav>
@@ -23,7 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
     const publicOptions = (
         <nav>
             <div className="nav-left">
-                <h3>Welcome to ZOOM Graphics</h3>
+                {/* <h3>Welcome to ZOOM Graphics</h3> */}
             </div>
             <div className="nav-right">
                 <Link to="/">Home</Link>

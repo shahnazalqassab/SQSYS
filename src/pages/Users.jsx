@@ -55,10 +55,11 @@ const Users = ({ user }) => {
         }
     }
 
-    const handleDelete = async (userId) => {
+    const handleDelete = async (userPassed) => {
+        console.log(userPassed)
         try {
-            await deleteUser(userId)
-            setUsers(users.filter(user => user._id !== userId))
+            await deleteUser(userPassed._id)
+            setUsers(users.filter(user => user._id !== userPassed._id))
 
         } catch (error) {
             console.error('Failed to delete user:', error)

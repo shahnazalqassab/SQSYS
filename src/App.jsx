@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { CheckSession } from './services/User'
 import NavBar from './components/NavBar'
+import Sidebar from './components/SideBar'
 import Footer from './components/Footer'
 import Index from './pages/Index'
 import Home from './pages/Home'
@@ -20,12 +21,10 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('token')
 
-    const checkToken = async () => {
-      const user = await CheckSession()
-      setUser(user)
-    }
-
+    if (token) {
       checkToken()
+    }
+  
   }, [])
   
   const handleLogout = () => {
@@ -34,11 +33,22 @@ const App = () => {
     navigate('/')
   }
 
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+  }
+  
   return (
-    <>
+    <div className = "app-root">
+      <header>
       <NavBar user={user} handleLogout={handleLogout} />
+      </header>
 
-      <main>
+      <div className = "app-with-sidebar">
+        {user && <Sidebar user={user} handleLogout={handleLogout} />}
+
+
+      <main className = "main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -53,8 +63,9 @@ const App = () => {
           {/* <Route path="/user/create" element={<CreateUser setUser={setUser} />} /> */}
         </Routes>
       </main>
+      </div>
       <Footer />
-    </>
+      </div>
   )
 
 

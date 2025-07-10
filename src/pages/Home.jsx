@@ -8,11 +8,11 @@ const Home = ({ user }) => {
         <div className="home-css">
         <h1>Welcome to ZOOM Graphics</h1>
         <p>Click it, or miss it</p>
-        <section className="welcome-signin">
+        {/* <section className="welcome-signin">
             {!user && (
             <button onClick={() => navigate('/user/login')}>Sign In</button>
             )}
-        </section>
+        </section> */}
         </div>
     )
 }
