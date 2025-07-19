@@ -7,6 +7,7 @@ const Client = Axios.create({ baseURL: BASE_URL })
 Client.interceptors.request.use(
     async (config) => {
         const token = localStorage.getItem('token')
+        // console.log(token)
         
         if (token && token !== 'undefined' && token !== '') {
             config.headers['Authorization'] = `Bearer ${token}`

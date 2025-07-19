@@ -7,7 +7,7 @@ const Sidebar = ({ signedUser, handleLogout }) => {
     return (
         <aside className="sidebar">
             <div className="sidebar-header">
-                <h3>Welcome, {signedUser.name}!</h3>
+                {/* <h3>Welcome, {signedUser.name}!</h3> */}
             </div>
             <nav className="sidebar-nav">
                 <ul>

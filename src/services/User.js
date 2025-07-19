@@ -4,7 +4,7 @@ import Client from './api'
 
 export const createUser = async (data) => {
     const token = localStorage.getItem('token')
-    console.log(token)
+    // console.log(token)
     try {
         const response = await Client.post('/user/create', data)
         return response.data
@@ -19,9 +19,10 @@ export const createUser = async (data) => {
 export const loginUser = async (data) => {
     try {
         const response = await Client.post('/user/login', data)
+        // console.log(response)
         localStorage.setItem('token', response.data.token) // Store token in localStorage
         // console.log(localStorage.token)
-        return response.data.user
+        return response.data
 
     } catch (error) {
         console.log('Error logging in user:', error)
@@ -92,7 +93,7 @@ export const updateState = async (id, data) => {
 
 export const deleteUser = async (id) => {
     try {
-        const response = await Client.delete(`/user/users/${id}`)
+        const response = await Client.delete(`/user/${id}/users`)
         return response.data
 
     } catch (error) {

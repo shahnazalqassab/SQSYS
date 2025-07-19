@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { loginUser } from '../services/User'
 
-const Login = ({ setUser }) => {
+const Login = ({ setSignedUser }) => {
     let navigate = useNavigate()
 
     const initialState = {
@@ -23,10 +23,11 @@ const Login = ({ setUser }) => {
 
         try {
             const payload = await loginUser(formValues)
+            console.log(payload)
             setFormValues(initialState)
-            setUser(payload)
+            setSignedUser(payload.user)
             localStorage.setItem('token', payload.token)
-            navigate(`/user/${payload.id}/index`)
+            navigate(`/user/${payload.user.id}/index`)
 
         } catch (error) {
             console.log('Login failed:', error)

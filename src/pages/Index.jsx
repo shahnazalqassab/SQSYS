@@ -2,18 +2,18 @@ import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
-const Index = ({ user }) => {
+const Index = ({ signedUser }) => {
     let navigate = useNavigate()
 
     const [userData, setUserData] = useState(null)
 
     useEffect(() => {
-        if (user) {
-            setUserData(user)
+        if (signedUser) {
+            setUserData(signedUser)
         } else {
             navigate('/user/login')
         }
-    }, [user, navigate])
+    }, [signedUser, navigate])
 
     return (
         <div className="index-css">

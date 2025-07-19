@@ -4,7 +4,7 @@ import UserList from '../components/UserList'
 import UserForm from '../components/UserForm'
 import { getUsers, updateUser, createUser, resetUser, deleteUser, updateState } from '../services/User'
 
-const Users = ({ user }) => {
+const Users = ({ signedUser }) => {
     const [users, setUsers] = useState([])
     const [createdUser, setCreatedUser] = useState(null)
     const [selectedUser, setSelectedUser] = useState(null)
@@ -29,7 +29,7 @@ const Users = ({ user }) => {
 
     const handleCreate = async (userData) => {
         try {
-            const newUser = await createUser({ ...userData, user })
+            const newUser = await createUser({ ...userData, signedUser })
             console.log(newUser)
             setUsers([...users, newUser.user])
             setShowForm(false)
@@ -106,7 +106,7 @@ const Users = ({ user }) => {
         
                 </>
             )}
-            <UserList user = {user} users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onDelete={handleDelete} onState={handleState} />
+            <UserList signedUser = {signedUser} users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onDelete={handleDelete} onState={handleState} />
         </div>
     )
 }
