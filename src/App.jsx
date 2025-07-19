@@ -15,7 +15,7 @@ import './styles/App.css'
 
 const App = () => {
   const navigate = useNavigate()
-  const [user, setUser] = useState(null)
+  const [signedUser, setSignedUser] = useState(null)
 
 
   useEffect(() => {
@@ -28,24 +28,24 @@ const App = () => {
   }, [])
   
   const handleLogout = () => {
-    setUser(null)
+    setSignedUser(null)
     localStorage.clear()
     navigate('/')
   }
 
   const checkToken = async () => {
-    const user = await CheckSession()
-    setUser(user)
+    const signedUser = await CheckSession()
+    setSignedUser(signedUser)
   }
-  
+
   return (
     <div className = "app-root">
       <header>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar signedUser={signedUser} handleLogout={handleLogout} />
       </header>
 
       <div className = "app-with-sidebar">
-        {user && <Sidebar user={user} handleLogout={handleLogout} />}
+        {signedUser && <Sidebar signedUser={signedUser} handleLogout={handleLogout} />}
 
 
       <main className = "main-content">
@@ -53,11 +53,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/user/login" element={<Login setUser={setUser} />} />
-          <Route path="/user/:id/index" element={<Index user={user} />} />
-          <Route path="/user/:id/users" element={<Users user={user} />} />
-          <Route path="/user/:id/suppliers" element={<Suppliers user={user} />} />
-          <Route path="/user/:id/products" element={<Products user={user} />} />
+          <Route path="/user/login" element={<Login setSignedUser={setSignedUser} />} />
+          <Route path="/user/:id/index" element={<Index signedUser={signedUser} />} />
+          <Route path="/user/:id/users" element={<Users signedUser={signedUser} />} />
+          <Route path="/user/:id/suppliers" element={<Suppliers signedUser={signedUser} />} />
+          <Route path="/user/:id/products" element={<Products signedUser={signedUser} />} />
 
 
           {/* <Route path="/user/create" element={<CreateUser setUser={setUser} />} /> */}

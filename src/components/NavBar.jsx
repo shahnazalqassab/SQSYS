@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom'
 import '../styles/App.css'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ signedUser, handleLogout }) => {
     let userOptions
 
-    if (user) {
+    if (signedUser) {
         userOptions = (
             <nav>
                 <div className = "nav-left">
-                    {/* <h3> Welcome, {user.name}!</h3> */}
+                    <h3> Welcome, {signedUser.name}!</h3>
                 </div>
                 <div className="nav-right">
                 {/* <Link to={`/user/${user.id}/products`}>Products</Link>
                 <Link to={`/user/${user.id}/suppliers`}>Suppliers</Link>                
                 <Link to={`/user/${user.id}/users`}>Users</Link>                 */}
-                <Link to={`/user/${user.id}/index`}>Home</Link>                
+                <Link to={`/user/${signedUser.id}/index`}>Index</Link>                
                 <button onClick={handleLogout} to="/">Sign out</button>
             </div>
             </nav>
@@ -40,7 +40,7 @@ const NavBar = ({ user, handleLogout }) => {
             <Link to = "/">
             <img className = "logo" src = "src/images/logo.PNG" alt = "logo" />
             </Link>
-            {user ? userOptions : publicOptions}
+            {signedUser ? userOptions : publicOptions}
         </header>
     )
 }

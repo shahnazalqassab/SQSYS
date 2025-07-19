@@ -5,13 +5,13 @@ export const BASE_URL = 'http://localhost:3030'
 const Client = Axios.create({ baseURL: BASE_URL })
 
 Client.interceptors.request.use(
-    (config) => {
+    async (config) => {
         const token = localStorage.getItem('token')
         
-        if (token) {
+        if (token && token !== 'undefined' && token !== '') {
             config.headers['Authorization'] = `Bearer ${token}`
         }
-        console.log('Request config:', config)
+        // console.log('Request config:', config)
         return config
     },
     

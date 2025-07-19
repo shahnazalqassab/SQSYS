@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 
-const UserList = ({ users, onEdit, onDelete, setSelectedUser, onReset, onState  }) => {
+const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onState  }) => {
     const navigate = useNavigate()
     const [editId, setEditId] = useState(null)
     const [editValues, setEditValues] = useState({})  

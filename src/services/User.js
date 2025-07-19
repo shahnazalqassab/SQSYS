@@ -3,6 +3,8 @@ import Client from './api'
 
 
 export const createUser = async (data) => {
+    const token = localStorage.getItem('token')
+    console.log(token)
     try {
         const response = await Client.post('/user/create', data)
         return response.data
@@ -18,7 +20,7 @@ export const loginUser = async (data) => {
     try {
         const response = await Client.post('/user/login', data)
         localStorage.setItem('token', response.data.token) // Store token in localStorage
-        console.log(localStorage.token)
+        // console.log(localStorage.token)
         return response.data.user
 
     } catch (error) {
@@ -28,9 +30,9 @@ export const loginUser = async (data) => {
 }
 
 
-export const getUsers = async () => {
+export const getUsers = async (id) => {
     try {
-        const response = await Client.get(`/user/users`)
+        const response = await Client.get(`/user/${id}/users`)
         return response.data
 
     } catch (error) {
@@ -107,6 +109,6 @@ export const CheckSession = async () => {
 
     } catch (error) {
         console.log('Error checking session:', error)
-        return null
+        throw error
     }
 }

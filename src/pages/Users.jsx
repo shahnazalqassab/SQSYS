@@ -29,7 +29,7 @@ const Users = ({ user }) => {
 
     const handleCreate = async (userData) => {
         try {
-            const newUser = await createUser({ ...userData })
+            const newUser = await createUser({ ...userData, user })
             console.log(newUser)
             setUsers([...users, newUser.user])
             setShowForm(false)
@@ -106,7 +106,7 @@ const Users = ({ user }) => {
         
                 </>
             )}
-            <UserList users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onDelete={handleDelete} onState={handleState} />
+            <UserList user = {user} users = {users} setSelectedUser={setSelectedUser} onEdit={handleEdit} onReset={handleReset} onDelete={handleDelete} onState={handleState} />
         </div>
     )
 }
