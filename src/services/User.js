@@ -91,9 +91,12 @@ export const updateState = async (id, data) => {
 }
 
 
-export const deleteUser = async (id) => {
+export const deleteUser = async (signedUser, deletedUser) => {
+    console.log('Deleting user:', deletedUser)
+    console.log('Signed user:', signedUser)
+
     try {
-        const response = await Client.delete(`/user/${id}/users`)
+        const response = await Client.delete(`/user/${signedUser.id}/users`, {deletedUser})
         return response.data
 
     } catch (error) {

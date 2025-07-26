@@ -17,7 +17,7 @@ const Users = ({ signedUser }) => {
     useEffect(() => {
         const fetchUsers = async () => {
         try {
-            const data = await getUsers()
+            const data = await getUsers(signedUser.id)
             setUsers(data)
 
         } catch (error) {
@@ -58,7 +58,7 @@ const Users = ({ signedUser }) => {
     const handleDelete = async (userPassed) => {
         console.log(userPassed)
         try {
-            await deleteUser(userPassed._id)
+            await deleteUser(signedUser, userPassed)
             setUsers(users.filter(user => user._id !== userPassed._id))
 
         } catch (error) {

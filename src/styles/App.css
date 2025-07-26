@@ -351,7 +351,7 @@ html, body, #root {
 
 .user-list th, .user-list td {
   color: #111;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 0.8rem;
   text-align: justify;
 }
 
@@ -376,7 +376,7 @@ html, body, #root {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 0.4rem 1rem;
+  padding: 0.3rem;
   font-size: 1rem;
   font-weight: 500;
   margin-right: 0.5rem;
@@ -415,7 +415,6 @@ html, body, #root {
   }
   .user-list table, .user-list th, .user-list td {
     font-size: 0.95rem;
-    padding: 0.5rem 0.4rem;
 
   }
 }

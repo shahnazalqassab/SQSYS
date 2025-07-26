@@ -71,10 +71,10 @@ const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onS
                             </>
                             ) : (
                             <>
-                                <button onClick={() => onReset(user)}>Reset Password</button>
-                                <button onClick={() => { setSelectedUser(user); handleEditClick(user); }}>Edit</button>                                
-                                <button onClick={() => onState(user)}>Activate/Deactivate</button>
-                                <button onClick={() => onDelete(user)}>Delete</button>
+                                <button onClick={() => onReset(user)} title="Reset password">R</button>
+                                <button onClick={() => { setSelectedUser(user); handleEditClick(user); }} title="Edit details">E</button>                                
+                                <button onClick={() => onState(user)} title="Activate/Deactivate User">U</button>
+                                <button onClick={() => onDelete(user)} title="Delete User">X</button>
                             </>
                             )}
                         </td>
