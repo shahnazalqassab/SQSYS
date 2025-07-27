@@ -7,8 +7,26 @@ const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onS
     const [editId, setEditId] = useState(null)
     const [editValues, setEditValues] = useState({})  
 
-    console.log('Users:', users)
+    // console.log('Users:', users)
 
+    const [filters, setFilters] = useState ({
+        username: '', 
+        name: '',
+        email: '',
+        user_role: '',
+        status: ''
+    })
+
+    const handleFilterChange = (event ) => {
+        setFilters({ ...filters, [event.target.name]: event.target.value })
+    }
+
+    const filteredUsers = users.filter( user => user.username?.toLowerCase().includes(filters.username.toLowerCase()) &&
+        user.name?.toLowerCase().includes(filters.name.toLowerCase()) &&
+        user.email?.toLowerCase().includes(filters.email.toLowerCase()) &&
+        user.user_role?.toLowerCase().includes(filters.user_role.toLowerCase()) &&
+        user.status?.toLowerCase().includes(filters.status.toLowerCase())
+    )
 
     const handleEditClick = (user) => {
         setEditId(user._id)
@@ -36,6 +54,7 @@ const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onS
     return (
         <div className = "user-list">
             <h2>User List</h2>
+            <p>{users.length} User</p>
             <table>
                 <thead>
                     <tr>
@@ -46,9 +65,57 @@ const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onS
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
+                    <tr>
+                        <th>
+                            <input
+                                name="username"
+                                value={filters.username}
+                                onChange={handleFilterChange}
+                                placeholder="Filter"
+                                style={{ width: '90%' }}
+                            />
+                        </th>
+                        <th>
+                            <input
+                                name="name"
+                                value={filters.name}
+                                onChange={handleFilterChange}
+                                placeholder="Filter"
+                                style={{ width: '90%' }}
+                            />
+                        </th>
+                        <th>
+                            <input
+                                name="email"
+                                value={filters.email}
+                                onChange={handleFilterChange}
+                                placeholder="Filter"
+                                style={{ width: '90%' }}
+                            />
+                        </th>
+                        <th>
+                            <input
+                                name="user_role"
+                                value={filters.user_role}
+                                onChange={handleFilterChange}
+                                placeholder="Filter"
+                                style={{ width: '90%' }}
+                            />
+                        </th>
+                        <th>
+                            <input
+                                name="status"
+                                value={filters.status}
+                                onChange={handleFilterChange}
+                                placeholder="Filter"
+                                style={{ width: '90%' }}
+                            />
+                        </th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>     
-                    {users.map((user) => (
+                    {filteredUsers.map((user) => (
                         <tr key={user._id}>
                         <td>{user.username}</td>
                         <td>

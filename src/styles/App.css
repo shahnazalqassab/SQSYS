@@ -329,15 +329,14 @@ html, body, #root {
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .user-list h2 {
-  color: #00a89c;
+  color: #008080;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  letter-spacing: 1px;
+  margin-bottom: 1.2rem;
+
 }
 
 .user-list table {

@@ -56,7 +56,7 @@ const Users = ({ signedUser }) => {
     }
 
     const handleDelete = async (userPassed) => {
-        console.log(userPassed)
+        console.log('Passed to Users page:', userPassed)
         try {
             await deleteUser(signedUser, userPassed)
             setUsers(users.filter(user => user._id !== userPassed._id))

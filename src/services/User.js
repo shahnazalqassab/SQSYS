@@ -96,7 +96,7 @@ export const deleteUser = async (signedUser, deletedUser) => {
     console.log('Signed user:', signedUser)
 
     try {
-        const response = await Client.delete(`/user/${signedUser.id}/users`, {deletedUser})
+        const response = await Client.delete(`/user/${signedUser.id}/users/${deletedUser._id}`, deletedUser)
         return response.data
 
     } catch (error) {
