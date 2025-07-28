@@ -14,7 +14,7 @@ const NavBar = ({ signedUser, handleLogout }) => {
                 {/* <Link to={`/user/${user.id}/products`}>Products</Link>
                 <Link to={`/user/${user.id}/suppliers`}>Suppliers</Link>                
                 <Link to={`/user/${user.id}/users`}>Users</Link>                 */}
-                <Link to={`/user/${signedUser.id}/index`}>Index</Link>                
+                <Link to={`/user/${signedUser.id}/dashboards`}>Dashboards</Link>                
                 <button onClick={handleLogout} to="/">Sign out</button>
             </div>
             </nav>

@@ -241,7 +241,7 @@ html, body, #root {
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .index-css h1 {
@@ -251,6 +251,15 @@ html, body, #root {
   font-weight: 700;
   letter-spacing: 1px;
   text-align: center;
+}
+
+.index-css h2 {
+  color: #00796b;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: left;
 }
 
 .index-css p {

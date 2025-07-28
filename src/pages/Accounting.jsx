@@ -4,7 +4,7 @@ import SupplierList from '../components/SupplierList'
 import SupplierForm from '../components/SupplierForm'
 import { getSuppliers, updateSupplier, createSupplier, deleteSupplier } from '../services/Supplier'
 
-const Suppliers = ({ user, supplier }) => {
+const Suppliers = ({ signedUser, supplier }) => {
     const [suppliers, setSuppliers] = useState([])
     const [createdSupplier, setCreatedSupplier] = useState(null)
     const [selectedSupplier, setSelectedSupplier] = useState(null)

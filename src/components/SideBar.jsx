@@ -12,13 +12,19 @@ const Sidebar = ({ signedUser, handleLogout }) => {
             <nav className="sidebar-nav">
                 <ul>
                     <li>
-                        <Link to={`/user/${signedUser.id}/products`}>Products</Link>
+                        <Link to={`/user/${signedUser.id}/inventory`}>Inventory System</Link>
                     </li>
                     <li>
-                        <Link to={`/user/${signedUser.id}/suppliers`}>Suppliers</Link>
+                        <Link to={`/user/${signedUser.id}/pos`}>Point of Sale</Link>
                     </li>
                     <li>
-                        <Link to={`/user/${signedUser.id}/users`}>Users</Link>
+                        <Link to={`/user/${signedUser.id}/accounting`}>Accounting System</Link>
+                    </li>
+                    <li>
+                        <Link to={`/user/${signedUser.id}/administration`}>Administration</Link>
+                    </li>
+                    <li>
+                        <Link to={`/user/${signedUser.id}/communications`}>Communications</Link>
                     </li>
                     <li>
                         <button className="sidebar-logout" onClick={handleLogout}>Sign out</button>
