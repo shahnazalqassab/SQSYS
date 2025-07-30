@@ -27,7 +27,7 @@ const Login = ({ setSignedUser }) => {
             setFormValues(initialState)
             setSignedUser(payload.user)
             localStorage.setItem('token', payload.token)
-            navigate(`/user/${payload.user.id}/index`)
+            navigate(`/user/${payload.user.id}/dashboards`)
 
         } catch (error) {
             console.log('Login failed:', error)

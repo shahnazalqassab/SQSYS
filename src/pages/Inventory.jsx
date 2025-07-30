@@ -1,10 +1,12 @@
 import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProductList from '../components/ProductList'
+import ProductForm from '../components/ProductForm'
+import CategoryForm from '../components/CategoryForm'
 
 import { GetProducts, CreateProduct, UpdateProduct, DeleteProduct } from '../services/Product'
 
-const Products = ({ user }) => {
+const Inventory = ({ user }) => {
     let navigate = useNavigate()
     const [products, setProducts] = useState([])
     const [selectedProduct, setSelectedProduct] = useState(null)
@@ -36,9 +38,10 @@ const Products = ({ user }) => {
     return (
         <div className="products-css">
             <h1>Inventory Management</h1>
-            <button onClick = {() => { setShowForm(!showForm); setFormError('') }}>
-                {showForm ? 'Cancel' : 'Add New Product'}
-            </button>
+            <input type="button"
+            value={showForm ? 'Cancel' : 'Products'}
+            onClick={() => { setShowForm(!showForm); setFormError('') }}
+            />
             {showForm && (
                 <>
                     <ProductForm
@@ -50,10 +53,24 @@ const Products = ({ user }) => {
         
                 </>
             )}
+            <input type="button"
+            value={showForm ? 'Cancel' : 'Categories'}
+            onClick={() => { setShowForm(!showForm); setFormError('') }}
+            />
+            {showForm && (
+                <>
+                    <CategoryForm
+                        onSubmit = {handleCreate}
+                        onCancel = {() => setShowForm(false)}
+                        error = {formError}
+                    />
+        
+                </>
+            )}
             <ProductList products = {products} setSelectedProduct={setSelectedProduct} onEdit={handleEdit} onDelete={handleDelete} />
         </div>
     )
 }
 
 
-export default Products
+export default Inventory
