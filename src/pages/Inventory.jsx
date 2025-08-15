@@ -6,12 +6,12 @@ import CategoryForm from '../components/CategoryForm'
 
 import { GetProducts, CreateProduct, UpdateProduct, DeleteProduct } from '../services/Product'
 
-const Inventory = ({ user }) => {
+const Inventory = ({ signedUser }) => {
     let navigate = useNavigate()
     const [products, setProducts] = useState([])
     const [selectedProduct, setSelectedProduct] = useState(null)
     const [showForm, setShowForm] = useState(false)
-
+    const [formError, setFormError] = useState('')
 
     const [userData, setUserData] = useState(null)
 
@@ -27,6 +27,20 @@ const Inventory = ({ user }) => {
             fetchProducts()
         }, [])
 
+    const handleCreate = async (productData) => {
+        try {
+            const newProduct = await CreateProduct({ ...productData, created_by: signedUser._id })
+            setProducts([...products, newProduct])
+            setShowForm(false)
+            setFormError('')
+    
+        } catch (error) {
+            const message = error?.response?.data?.message || 'Failed to create product.'
+            setFormError(message)
+            console.error('Failed to create product:', error)
+        }
+    }
+
     const handleEdit = () => {
 
     }
@@ -36,7 +50,7 @@ const Inventory = ({ user }) => {
     }
     
     return (
-        <div className="products-css">
+        <div className="inventory-css">
             <h1>Inventory Management</h1>
             <input type="button"
             value={showForm ? 'Cancel' : 'Products'}
@@ -45,10 +59,11 @@ const Inventory = ({ user }) => {
             {showForm && (
                 <>
                     <ProductForm
+                        signedUser = {signedUser}
                         onSubmit = {handleCreate}
                         onCancel = {() => setShowForm(false)}
                         error = {formError}
-                        suppliers = {suppliers}
+                        // suppliers = {suppliers}
                     />
         
                 </>
@@ -60,6 +75,7 @@ const Inventory = ({ user }) => {
             {showForm && (
                 <>
                     <CategoryForm
+                        signedUser = {signedUser}
                         onSubmit = {handleCreate}
                         onCancel = {() => setShowForm(false)}
                         error = {formError}

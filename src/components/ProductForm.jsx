@@ -1,12 +1,25 @@
 import { useState, useEffect } from 'react'
 
 const ProductForm = ({ onSubmit, error, categories = [], products = [] }) => {
+    
     const [form, setForm] = useState({
-        username: '',
         name: '',
-        email: '',
-        user_role: '',
+        selling_price: '',
+        cost_price: '',
+        key_features: '',
+        status: 'in stock',
+        quantity_available: '',
+        min_balance: '',
+        sku: '',
+        ean: '',
+        tags: [],
+        pictures: [],
+        options: [],
+        category: '',
+        supplier: '',
+        entered_by: ''
     })
+
     const [usernameExists, setUsernameExists] = useState(false)
 
     useEffect(() => {

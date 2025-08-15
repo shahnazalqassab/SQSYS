@@ -38,7 +38,7 @@ const NavBar = ({ signedUser, handleLogout }) => {
     return (
         <header>
             <Link to = "/">
-            <img className = "logo" src = "src/images/logo.PNG" alt = "logo" />
+            <img className = "logo" src = "src/images/SQ.png" alt = "logo" />
             </Link>
             {signedUser ? userOptions : publicOptions}
         </header>

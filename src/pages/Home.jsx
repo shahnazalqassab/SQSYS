@@ -6,8 +6,8 @@ const Home = ({ user }) => {
 
     return (
         <div className="home-css">
-        <h1>Welcome to ZOOM Graphics</h1>
-        <p>Click it, or miss it</p>
+        <h1>Welcome to SQ system </h1>
+        <p>Your full Enterprise System</p>
         {/* <section className="welcome-signin">
             {!user && (
             <button onClick={() => navigate('/user/login')}>Sign In</button>

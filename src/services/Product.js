@@ -3,7 +3,7 @@ import Client from "./api"
 
 export const GetProducts = async () => {
     try {
-        const response = await Client.get('/products')
+        const response = await Client.get('/product')
         return response.data
 
     } catch (error) {
@@ -14,7 +14,7 @@ export const GetProducts = async () => {
 
 export const CreateProduct = async (productData) => {
     try {
-        const response = await Client.post('/products', productData,
+        const response = await Client.post('/product', productData,
             {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`

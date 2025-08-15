@@ -1,6 +1,6 @@
 const Footer = () => (
   <footer className="footer">
-    <p>&copy; {new Date().getFullYear()} ZOOM Graphics. All rights reserved.</p>
+    <p>&copy; {new Date().getFullYear()} SQSYS. All rights reserved.</p>
   </footer>
 )
 
