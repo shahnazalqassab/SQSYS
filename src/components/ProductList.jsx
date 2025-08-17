@@ -7,25 +7,7 @@ const ProductList = ({ signedUser, products, onEdit, onDelete, setSelectedProduc
     const [editId, setEditId] = useState(null)
     const [editValues, setEditValues] = useState({})  
 
-    // console.log('Users:', users)
-
-    // const [filters, setFilters] = useState ({
-    //     name: '',
-    //     selling_price: '',
-    //     cost_price: '',
-    //     key_features: '',
-    //     status: 'in stock',
-    //     quantity_available: '',
-    //     min_balance: '',
-    //     sku: '',
-    //     ean: '',
-    //     tags: [],
-    //     pictures: [],
-    //     options: [],
-    //     category: '',
-    //     supplier: '',
-    //     entered_by: signedUser._id
-    // })
+    console.log('Products:', products)
 
     // const handleFilterChange = (event ) => {
     //     setFilters({ ...filters, [event.target.name]: event.target.value })

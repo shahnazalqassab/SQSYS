@@ -32,7 +32,7 @@ const Inventory = ({ signedUser }) => {
     const handleInventorySelect = (option) => {
         switch (option) {
             case 'products-list':
-                setShowForm(false)
+                setShowForm(true)
                 break
             case 'create-product':
                 setShowForm(true)
@@ -75,6 +75,31 @@ const Inventory = ({ signedUser }) => {
             <h1>Inventory Management</h1>
             
             <InventoryDropTab signedUser={signedUser} onSelect={handleInventorySelect}/>
+
+            {showForm ? (
+                <ProductForm 
+                    onSubmit={handleCreate} 
+                    onCancel={() => setShowForm(false)} 
+                    formError={formError} 
+                    userData={userData} 
+                />
+            ) : (
+                <ProductList 
+                    products={products} 
+                    onEdit={(product) => {
+                        setUserData(product)
+                        setShowForm(true)
+                    }} 
+                    onDelete={async (productId) => {
+                        try {
+                            await DeleteProduct(productId)
+                            setProducts(products.filter(product => product._id !== productId))
+                        } catch (error) {
+                            console.error('Failed to delete product:', error)
+                        }
+                    }} 
+                />
+            )}
         </div>
     )
 }

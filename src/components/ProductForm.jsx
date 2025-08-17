@@ -23,12 +23,12 @@ const ProductForm = ({ onSubmit, error, categories = [], products = [] }) => {
     const [usernameExists, setUsernameExists] = useState(false)
 
     useEffect(() => {
-        if (form.username && users.length > 0) {
-            setUsernameExists(users.some(user => user.username === form.username))
+        if (form.username && products.length > 0) {
+            setUsernameExists(products.some(user => user.username === form.username))
         } else {
             setUsernameExists(false)
         }
-    }, [form.username, users])
+    }, [form.username, products])
 
     const handleChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -50,7 +50,7 @@ const ProductForm = ({ onSubmit, error, categories = [], products = [] }) => {
     }
 
     return (
-        <form className="user-form" onSubmit={handleSubmit}>
+        <form className="products-form" onSubmit={handleSubmit}>
         <input
             type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange}
             required
