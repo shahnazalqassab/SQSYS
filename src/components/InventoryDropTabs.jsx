@@ -27,33 +27,35 @@ const InventoryDropTab = ({ onSelect }) => {
     return (
         <>
         <div className="inventory-drop-menu">
-            <button onClick={toggleDropdownProducts}>
+            <button onClick={toggleDropdownProducts} className="drop-toggle">
                 Products Management
             </button>
             {isProductOpen && (
-                <div>
+                <div className="inventory-drop-content">
                     <ul>
                         <li onClick={() => onSelect('products-list')}>Products List</li>
                         <li onClick={() => onSelect('create-product')}>Create Product</li>
+                        <li onClick={() => onSelect('restock-product')}>Re-stock Product</li>
+
                     </ul>
                 </div>
             )}
-            <button onClick={toggleDropdownCategories}>
+            <button onClick={toggleDropdownCategories} className="drop-toggle">
                 Categories Management
             </button>
             {isCategoryOpen && (
-                <div>
+                <div className="inventory-drop-content">
                     <ul>
                         <li onClick={() => onSelect('categories-list')}>Categories List</li>
                         <li onClick={() => onSelect('create-category')}>Create Category</li>
                     </ul>
                 </div>
             )}
-            <button onClick={toggleDropdownSuppliers}>
+            <button onClick={toggleDropdownSuppliers} className="drop-toggle">
                 Suppliers Management
             </button>
             {isSupplierOpen && (
-                <div>
+                <div className="inventory-drop-content">
                     <ul>
                         <li onClick={() => onSelect('suppliers-list')}>Suppliers List</li>
                         <li onClick={() => onSelect('create-supplier')}>Create Supplier</li>

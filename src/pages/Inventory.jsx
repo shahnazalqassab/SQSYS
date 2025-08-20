@@ -32,7 +32,7 @@ const Inventory = ({ signedUser }) => {
     const handleInventorySelect = (option) => {
         switch (option) {
             case 'products-list':
-                setShowForm(true)
+                setShowForm(false)
                 break
             case 'create-product':
                 setShowForm(true)

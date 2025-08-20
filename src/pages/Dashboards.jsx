@@ -19,9 +19,6 @@ const Index = ({ signedUser }) => {
         <div className="index-css">
             <h1>Welcome to your dashboard, {userData ? userData.username : 'Guest'}</h1>
 
-            <h2>Change Password</h2>
-
-
         </div>
     )
 }

@@ -37,7 +37,10 @@ const UserForm = ({ onSubmit, error, users = [] }) => {
     }
 
     return (
-        <form className="user-form" onSubmit={handleSubmit}>
+        <div className="user-form">
+        <h2>Create new user</h2>
+        
+        <form onSubmit={handleSubmit}>
         <input
             type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange}
             required
@@ -67,7 +70,7 @@ const UserForm = ({ onSubmit, error, users = [] }) => {
         )}
 
         </form>
-    )
-    }
+    </div>
+    )}
 
 export default UserForm
