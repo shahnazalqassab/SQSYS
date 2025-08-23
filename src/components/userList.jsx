@@ -52,7 +52,7 @@ const UserList = ({ user, users, onEdit, onDelete, setSelectedUser, onReset, onS
     }
 
     return (
-        <div className = "user-list">
+        <div className = "users-list">
             <h2>User List</h2>
             <p>{users.length} User</p>
             <table>

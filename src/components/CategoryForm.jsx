@@ -37,7 +37,7 @@ const CategoryForm = ({ onSubmit, error, categories = [] }) => {
     }
 
     return (
-        <form className="user-form" onSubmit={handleSubmit}>
+        <form className="category-form" onSubmit={handleSubmit}>
         <input
             type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange}
             required

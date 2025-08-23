@@ -2,7 +2,10 @@ import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProductList from '../components/ProductList'
 import ProductForm from '../components/ProductForm'
+import CategoryList from '../components/CategoryList'
 import CategoryForm from '../components/CategoryForm'
+import SupplierList from '../components/SupplierList'
+import SupplierForm from '../components/SupplierForm'
 import InventoryDropTab from '../components/InventoryDropTabs'
 
 import { GetProducts, CreateProduct, UpdateProduct, DeleteProduct } from '../services/Product'
@@ -10,10 +13,11 @@ import { GetProducts, CreateProduct, UpdateProduct, DeleteProduct } from '../ser
 const Inventory = ({ signedUser }) => {
     let navigate = useNavigate()
     const [products, setProducts] = useState([])
-    const [showForm, setShowForm] = useState(false)
+    // const [showForm, setShowForm] = useState(false)
     const [formError, setFormError] = useState('')
+    const [activeTab, setActiveTab] = useState('')
 
-    const [userData, setUserData] = useState(null)
+    const [productData, setProductData] = useState(null)
 
     useEffect(() => {
             const fetchProducts = async () => {
@@ -30,29 +34,9 @@ const Inventory = ({ signedUser }) => {
 
 
     const handleInventorySelect = (option) => {
-        switch (option) {
-            case 'products-list':
-                setShowForm(false)
-                break
-            case 'create-product':
-                setShowForm(true)
-                break
-            case 'categories-list':
-                // Handle categories list selection
-                break
-            case 'create-category':
-                // Handle create category selection
-                break
-            case 'suppliers-list':
-                // Handle suppliers list selection
-                break
-            case 'create-supplier':
-                // Handle create supplier selection
-                break
-            default:
-                console.warn('Unknown inventory option selected:', option)
-        }
-
+        setActiveTab(option)
+        setFormError('')
+        setProductData(null)
     }
 
     const handleCreate = async (productData) => {
@@ -76,19 +60,12 @@ const Inventory = ({ signedUser }) => {
             
             <InventoryDropTab signedUser={signedUser} onSelect={handleInventorySelect}/>
 
-            {showForm ? (
-                <ProductForm 
-                    onSubmit={handleCreate} 
-                    onCancel={() => setShowForm(false)} 
-                    formError={formError} 
-                    userData={userData} 
-                />
-            ) : (
+            {activeTab === 'products-list' && (
                 <ProductList 
                     products={products} 
                     onEdit={(product) => {
-                        setUserData(product)
-                        setShowForm(true)
+                        setProductData(product)
+                        setActiveTab('create-product')
                     }} 
                     onDelete={async (productId) => {
                         try {
@@ -98,6 +75,39 @@ const Inventory = ({ signedUser }) => {
                             console.error('Failed to delete product:', error)
                         }
                     }} 
+                />
+            )}
+
+
+            {activeTab === 'create-product' && (
+                <ProductForm 
+                    onSubmit={handleCreate} 
+                    onCancel={() => setActiveTab('')} 
+                    formError={formError} 
+                    productData={productData} 
+                />
+            )}
+
+
+            {activeTab === 'categories-list' && (
+                <CategoryList signedUser={signedUser} />
+            )}  
+
+            {activeTab === 'create-category' && (
+                <CategoryForm 
+                    onCancel={() => setActiveTab('')} 
+                    formError={formError} 
+                />
+            )}
+
+            {activeTab === 'suppliers-list' && (
+                <SupplierList signedUser={signedUser} />
+            )}
+
+            {activeTab === 'create-supplier' && (
+                <SupplierForm 
+                    onCancel={() => setActiveTab('')} 
+                    formError={formError} 
                 />
             )}
         </div>
