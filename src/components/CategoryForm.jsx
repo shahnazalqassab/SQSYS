@@ -2,20 +2,17 @@ import { useState, useEffect } from 'react'
 
 const CategoryForm = ({ onSubmit, error, categories = [] }) => {
     const [form, setForm] = useState({
-        username: '',
         name: '',
-        email: '',
-        user_role: '',
     })
-    const [usernameExists, setUsernameExists] = useState(false)
+    const [categoryExists, setCategoryExists] = useState(false)
 
     useEffect(() => {
-        if (form.username && users.length > 0) {
-            setUsernameExists(users.some(user => user.username === form.username))
+        if (form.name && categories.length > 0) {
+            setCategoryExists(categories.some(category => category.name === form.name))
         } else {
-            setUsernameExists(false)
+            setCategoryExists(false)
         }
-    }, [form.username, users])
+    }, [form.name, categories])
 
     const handleChange = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -24,45 +21,26 @@ const CategoryForm = ({ onSubmit, error, categories = [] }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        if (usernameExists)
+        if (categoryExists)
             return 
 
         onSubmit(form)
         setForm({
-            username: '',
-            name: '',
-            email: '',
-            user_role: '',
+            name: ''
         })
     }
 
     return (
         <form className="category-form" onSubmit={handleSubmit}>
-        <input
-            type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange}
-            required
-        />
         <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange}
             required
         />
-        <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange}
-            required
-        />
-        <select name="user_role" value={form.user_role} onChange={handleChange}
-            required
-        >
-            <option value="">Select Role</option>
-            <option value="admin">Admin</option>
-            <option value="salesperson">Salesperson</option>
-            <option value="inventory staff">Inventory Staff</option>
-        </select>
-
         <button type="submit">Create</button>
 
-        {(error || usernameExists) && (
+        {(error || categoryExists) && (
             <div className="form-error">
                 {error && <div>{error}</div>}
-                {usernameExists && <div>Username already exists.</div>}
+                {categoryExists && <div>Category already exists.</div>}
             </div>
         )}
 

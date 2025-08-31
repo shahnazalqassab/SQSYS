@@ -76,6 +76,25 @@ const ProductForm = ({ onSubmit, error, categories = [], products = [] }) => {
         <div className="product-form">
             <h2>Create New Product</h2>
             <form onSubmit={handleSubmit} autoComplete="off">
+                <label htmlFor="sku">SKU</label>
+                <input
+                    type="text"
+                    name="sku"
+                    id="sku"
+                    placeholder="SKU"
+                    value={form.sku}
+                    onChange={handleChange}
+                    required
+                />
+
+                <input type= "button" value="search"
+                onClick={() => {
+                    if (form.sku) {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(form.sku)}`, '_blank')
+            }
+                }}
+                />
+
                 <label htmlFor="name">Name</label>
                 <input
                     type="text"
@@ -154,17 +173,6 @@ const ProductForm = ({ onSubmit, error, categories = [], products = [] }) => {
                     id="min_balance"
                     placeholder="Minimum Balance"
                     value={form.min_balance}
-                    onChange={handleChange}
-                    required
-                />
-
-                <label htmlFor="sku">SKU</label>
-                <input
-                    type="text"
-                    name="sku"
-                    id="sku"
-                    placeholder="SKU"
-                    value={form.sku}
                     onChange={handleChange}
                     required
                 />
